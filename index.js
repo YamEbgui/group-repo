@@ -39,6 +39,17 @@ app.get("/api/persons/:id", (request, response) => {
   }
 });
 
+app.get("/api/persons", (request, response) => {
+  response.json(data);
+});
+
+app.delete("/api/persons/:id", (request, response) => {
+  const id = request.params.id;
+  data = data.filter((person) => person.id != id);
+  console.log(data);
+  response.status(204).end();
+});
+
 app.get("/info", (request, response) => {
   let d = new Date();
   d = d.toUTCString();
