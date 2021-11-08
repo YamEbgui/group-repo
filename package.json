@@ -1,0 +1,25 @@
+{
+  "name": "group-repo",
+  "version": "1.0.0",
+  "description": "Untill Tuesday finish sub-missions a and b.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YamEbgui/group-repo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YamEbgui/group-repo/issues"
+  },
+  "homepage": "https://github.com/YamEbgui/group-repo#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.14"
+  }
+}
