@@ -14,6 +14,7 @@ function getPhonebookLength() {
 }
 
 function getPerson(id) {
+  const data = fs.readFileSync("./data/phonebook.json");
   const phonebook = JSON.parse(data);
   for (const person of phonebook.data) {
     if (person.id == id) {
