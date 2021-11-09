@@ -1,26 +1,31 @@
 {
-  "name": "group-repo",
-  "version": "1.0.0",
-  "description": "Untill Tuesday finish sub-missions a and b.",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/YamEbgui/group-repo.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/YamEbgui/group-repo/issues"
-  },
-  "homepage": "https://github.com/YamEbgui/group-repo#readme",
-  "dependencies": {
-    "express": "^4.17.1",
-    "morgan": "^1.10.0",
-    "nodemon": "^2.0.14"
-  }
+	"name": "group-repo",
+	"version": "1.0.0",
+	"description": "Untill Tuesday finish sub-missions a and b.",
+	"main": "server.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node server.js",
+		"dev": "nodemon server.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/orrosman/group-repo.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/orrosman/group-repo/issues"
+	},
+	"homepage": "https://github.com/orrosman/group-repo#readme",
+	"devDependencies": {
+		"morgan": "^1.10.0",
+		"nodemon": "^2.0.14",
+		"uuid": "^8.3.2"
+	},
+	"dependencies": {
+		"cors": "^2.8.5",
+		"express": "^4.17.1"
+	}
 }
