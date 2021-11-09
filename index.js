@@ -25,6 +25,8 @@ let data = [
   },
 ];
 
+app.use(express.json());
+
 app.get("/api/persons", (request, response) => {
   response.json(data);
 });
@@ -43,6 +45,25 @@ app.get("/api/persons", (request, response) => {
   response.json(data);
 });
 
+app.post("/api/persons", (request, response) => {
+  const maxId = data.length > 0 ? Math.max(...data.map((n) => n.id)) : 0;
+  const body = request.body;
+  if (!body.name || !body.number) {
+    return response.status(400).json({ error: "name or number is missing" });
+  }
+  if (isExist(body.name)) {
+    return response.status(400).json({ error: "name is already exist" });
+  }
+
+  let person = {
+    id: maxId + 1,
+    name: body.name,
+    number: body.number,
+  };
+  data.push(person);
+  response.status(200).send("Adding person succsed");
+});
+
 app.delete("/api/persons/:id", (request, response) => {
   const id = request.params.id;
   data = data.filter((person) => person.id != id);
@@ -57,6 +78,15 @@ app.get("/info", (request, response) => {
     `<h3>Phonebook has info for ${data.length} people</h3><br><h2>${d}</h2>`
   );
 });
+
+function isExist(name) {
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].name === name) {
+      return true;
+    }
+  }
+  return false;
+}
 
 const PORT = 3001;
 app.listen(PORT, () => {
