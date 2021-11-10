@@ -11,6 +11,7 @@ const nameInput = document.getElementById("inputName");
 const phoneInput = document.getElementById("inputPhone");
 const addButton = document.getElementById("addBtn");
 const personsListElement = document.getElementById("personsList");
+const personDataElement = document.getElementById("personData");
 
 const serverUrl = "http://localhost:3001/";
 
@@ -55,6 +56,22 @@ const getAllPersonsRequest = async () => {
     });
 };
 
+const getPersonRequest = async (id) => {
+  axios
+    .get(`${serverUrl}api/persons/${id}`)
+    .then((result) => {
+      personDataElement.innerHTML = `<p>Name : ${result.data.name}</p><p>Phone Number : ${result.data.number}<p>`;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+const showDataOfPerson = async (event) => {
+  const id = event.target.children[0].id;
+  await getPersonRequest(id);
+};
+
 const displayAllPersons = (personsList) => {
   for (let i = 0; i < personsList.length; i++) {
     const deleteBtn = createElement("button", "🗑️", ["deleteBtn"], {
@@ -66,7 +83,7 @@ const displayAllPersons = (personsList) => {
       [personsList[i].name, deleteBtn],
       ["person", "list-group-item"]
     );
-    //eventListener for new item
+    newItem.addEventListener("click", showDataOfPerson);
     personsListElement.append(newItem);
   }
 };
@@ -97,4 +114,6 @@ const createElement = (
   }
   return el;
 };
+
+getAllPersonsRequest();
 addButton.addEventListener("click", addNewPerson);
