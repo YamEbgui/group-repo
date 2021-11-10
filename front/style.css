@@ -1,0 +1,7 @@
+body {
+  background-color: rgb(243, 227, 176);
+}
+#newPersonSection {
+  display: flex;
+  flex-direction: column;
+}
