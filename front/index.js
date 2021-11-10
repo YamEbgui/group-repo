@@ -27,7 +27,7 @@ const addRequest = async (name, phoneNumber) => {
       { headers: { "Access-Control-Allow-Origin": "*" } }
     )
     .then((result) => {
-      console.log(result);
+      getAllPersonsRequest();
     })
     .catch((err) => {
       alert("You are trying to add exist person");
@@ -35,12 +35,12 @@ const addRequest = async (name, phoneNumber) => {
     });
 };
 
-const addNewPerson = (event) => {
+const addNewPerson = async (event) => {
   const name = nameInput.value;
   const phoneNumber = phoneInput.value;
   console.log(`name:${name}  phone:${phoneNumber}`);
   if (name !== "" && phoneNumber !== "") {
-    addRequest(name, phoneNumber);
+    await addRequest(name, phoneNumber);
   }
 };
 
@@ -72,12 +72,30 @@ const showDataOfPerson = async (event) => {
   await getPersonRequest(id);
 };
 
+const deletePersonRequest = async (id) => {
+  axios
+    .delete(`${serverUrl}api/persons/${id}`)
+    .then((result) => {
+      console.log("person deleted");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+const deletePersonFromData = async (event) => {
+  const id = event.target.id;
+  console.log(event.target);
+  await deletePersonRequest(id);
+  personsListElement.removeChild(event.target.parentElement);
+};
+
 const displayAllPersons = (personsList) => {
   for (let i = 0; i < personsList.length; i++) {
     const deleteBtn = createElement("button", "🗑️", ["deleteBtn"], {
       id: `${personsList[i].id}`,
     });
-    //add event listener for delete
+    deleteBtn.addEventListener("click", deletePersonFromData);
     const newItem = createElement(
       "li",
       [personsList[i].name, deleteBtn],

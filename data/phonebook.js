@@ -35,6 +35,7 @@ function deletePerson(id) {
       fs.writeFileSync("./data/phonebook.json", JSON.stringify(phonebook));
       return `The person with ID ${id} was removed from phonebook`;
     }
+    index++;
   }
   return false;
 }
