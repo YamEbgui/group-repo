@@ -1,5 +1,5 @@
-// const bootstrap = require("bootstrap");
-// const styles = require("./style.css");
+//  const bootstrap = require("bootstrap");
+const styles = require("./style.css");
 //import axios from "axios";
 
 //const { Button } = require("bootstrap");

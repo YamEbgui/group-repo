@@ -1,21 +1,18 @@
 const express = require("express");
-
 const cors = require("cors");
-
+const path = require("path");
 const app = express();
-
 const PORT = 3001;
-
 const personsRouter = require("./routers/personsRouter");
-
 const Phonebook = require("./data/phonebook");
-
 const errorHandler = require("./middleware/errorHandler");
-
 const morgan = require("morgan");
 
 app.use(cors());
-
+app.use("/", express.static(path.resolve(`./dist`)));
+app.get("/", (req, res) => {
+  res.sendFile(path.resolve("./dist/index.html"));
+});
 app.use(express.json());
 
 morgan.token("body", (req) => {
