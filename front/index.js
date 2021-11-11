@@ -13,7 +13,7 @@ const addButton = document.getElementById("addBtn");
 const personsListElement = document.getElementById("personsList");
 const personDataElement = document.getElementById("personData");
 
-const serverUrl = "http://localhost:3001/";
+const serverUrl = "https://phonebookcyber.herokuapp.com/";
 
 const addRequest = async (name, phoneNumber) => {
   console.log(`name:${name}  phone:${phoneNumber}`);
